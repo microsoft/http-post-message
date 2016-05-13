@@ -1,0 +1,49 @@
+{
+  "name": "http-post-message",
+  "version": "1.0.0",
+  "description": "A library to enabled HTTP communication over window.postMessage using window-post-message-proxy.  The enables communicating with iframes in a well known protocol and pattern.",
+  "main": "dist/httpPostMessage.js",
+  "typings": "dist/httpPostMessage.d.ts",
+  "scripts": {
+    "test": "gulp test --debug",
+    "prepublish": "tsc -p ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://pbix.visualstudio.com/DefaultCollection/PaaS/_git/http-post-message"
+  },
+  "keywords": [
+    "Microsoft",
+    "post",
+    "message",
+    "http",
+    "iframe",
+    "protocol"
+  ],
+  "author": "Microsoft Power BI",
+  "license": "MIT",
+  "dependencies": {
+    "es6-promise": "^3.2.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-help": "^1.6.1",
+    "jasmine": "^2.4.1",
+    "jasmine-core": "^2.4.1",
+    "jquery": "^2.2.3",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-coverage": "^1.0.0",
+    "karma-jasmine": "^1.0.2",
+    "karma-phantomjs-launcher": "^1.0.0",
+    "karma-spec-reporter": "0.0.26",
+    "phantomjs-prebuilt": "^2.1.7",
+    "run-sequence": "^1.1.5",
+    "ts-loader": "^0.8.2",
+    "webpack-stream": "^3.2.0",
+    "yargs": "^4.7.0"
+  },
+  "publishConfig": {
+    "tag": "beta"
+  }
+}
