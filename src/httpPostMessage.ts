@@ -9,7 +9,7 @@ export interface IRequest {
 }
 
 export interface IResponse {
-  status: number;
+  statusCode: number;
   statusText: string;
   headers: any;
   body: any;
@@ -34,7 +34,7 @@ export class HttpPostMessage {
     };
   }
   static isErrorMessage(message: any): boolean {
-    return !(200 <= message.status && message.status < 300);
+    return !(200 <= message.statusCode && message.statusCode < 300);
   }
   
   defaultHeaders: any;

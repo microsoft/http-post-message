@@ -12,6 +12,7 @@
         "typings/main",
         "typings/main.d.ts",
         "test",
-        "tmp"
+        "tmp",
+        "dist"
     ]
 }

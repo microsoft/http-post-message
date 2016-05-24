@@ -124,7 +124,7 @@ describe("HttpPostMessage", function () {
       expect(postMessageSpy).toHaveBeenCalledWith(expectedRequest);
     });
     
-    it("all the methods can have optional parameter to pass other cust omheaders for the single request", function () {
+    it("all the methods can have optional parameter to pass other custom headers for the single request", function () {
       // Arrange
       const singleRequestHeaders = {
         'new-custom-header': 'newCustomValue'
@@ -184,5 +184,13 @@ describe("HttpPostMessage", function () {
       // Assert
       expect(actualTrackingProperties).toEqual(expectedTrackingProperties);
     });
+    
+    it("isErrorMessage should return true for messages with statusCode outside of range [200-300)", function () {
+      expect(hpm.HttpPostMessage.isErrorMessage({ statusCode: 100 })).toEqual(true);
+      expect(hpm.HttpPostMessage.isErrorMessage({ statusCode: 200 })).toEqual(false);
+      expect(hpm.HttpPostMessage.isErrorMessage({ statusCode: 300 })).toEqual(true);
+      expect(hpm.HttpPostMessage.isErrorMessage({ statusCode: 400 })).toEqual(true);
+      expect(hpm.HttpPostMessage.isErrorMessage({ statusCode: 500 })).toEqual(true);
+    })
   });
 });

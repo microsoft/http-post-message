@@ -2,9 +2,17 @@
 
 ## Setup
 
+Clone:
 ```
 git clone https://pbix.visualstudio.com/DefaultCollection/PaaS/Integrate/_git/http-post-message
 ```
+
+Install global dependencies if needed:
+```
+npm install -g gulp typings
+```
+
+Install local dependencies:
 ```
 npm install
 typings install
