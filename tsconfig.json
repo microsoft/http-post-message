@@ -1,7 +1,6 @@
 {
     "compilerOptions": {
-        "module": "umd",
-        "target": "es5",
+        "target": "es2015",
         "declaration": true,
         "noImplicitAny": true,
         "sourceMap": true,
@@ -11,6 +10,10 @@
         "node_modules",
         "typings/main",
         "typings/main.d.ts",
+        "typings/browser",
+        "typings/browser.d.ts",
+        "typings/index.d.ts",
+        "typings/globals/es6-promise",
         "test",
         "tmp",
         "dist"
