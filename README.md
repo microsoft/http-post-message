@@ -2,12 +2,12 @@
 
 A library to enabled HTTP communication over window.postMessage using window-post-message-proxy.  The enables communicating with iframes in a well known protocol and pattern.
 
-### Installation
+## Installation
 ```
 npm install -g http-post-message
 ```
 
-### Usage
+## Usage
 The HttpPostMessage takes in an object that implements the IWindowPostMessageProxy interface which
 is just one method `postMessage` which returns a Promise.
 
