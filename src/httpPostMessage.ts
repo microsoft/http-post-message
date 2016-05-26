@@ -1,6 +1,3 @@
-// TODO: Why does it say can't find module?
-// import * as wpmp from 'window-post-message-proxy';
-
 export interface IRequest {
   method: "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
   url: string;
@@ -15,7 +12,7 @@ export interface IResponse {
   body: any;
 }
 
-export interface IWindowPostMessageProxy {
+export interface IPostMessage {
   // postMessage<T>(message: any): Promise<T>;
   postMessage(message: any): Promise<any>;
 }

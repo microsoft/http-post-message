@@ -1,7 +1,7 @@
 import * as hpm from '../src/httpPostMessage';
 
 describe("HttpPostMessage", function () {
-  let windowPostMessageProxy: hpm.IWindowPostMessageProxy;
+  let windowPostMessageProxy: hpm.IPostMessage;
   let httpPostMessage: hpm.HttpPostMessage;
   const postMessage = (message: any): Promise<any> => {
     return Promise.resolve(message);
