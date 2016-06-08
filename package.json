@@ -5,7 +5,7 @@
   "main": "dist/httpPostMessage.js",
   "typings": "dist/httpPostMessage.d.ts",
   "scripts": {
-    "test": "gulp test --debug",
+    "test": "gulp test --chrome",
     "prepublish": "tsc -p ."
   },
   "repository": {

@@ -2,14 +2,14 @@
 
 ## Setup
 
-Clone:
+Clone the repository:
 ```
 git clone https://pbix.visualstudio.com/DefaultCollection/PaaS/Integrate/_git/http-post-message
 ```
 
 Install global dependencies if needed:
 ```
-npm install -g gulp typings
+npm install -g typescript gulp typings
 ```
 
 Install local dependencies:
@@ -22,25 +22,37 @@ typings install
 ```
 tsc -p .
 ```
-or if using VS Code: `Ctrl + Shift + B`
+Or if using VS Code: `Ctrl + Shift + B`
 
 ## Testing
 ```
 npm test
 ```
-> Note currently there seems to be a problem when running the tests using PhantomJS which is why the `--debug` flag is coded into the test command.
+> Note currently there seems to be a problem when running the tests using PhantomJS which is why the `--chrome` flag is coded into the test command.
 
 Run tests with PhantomJS
 ```
 gulp test
 ```
 
-Run tests with Chrome and close when finished
+There are various command line arguments that can be passed to the test command to facilitate debugging:
+
+Run tests with Chrome
+```
+gulp test --chrome
+```
+
+Enable  debug level logging for karma, and remove code coverage
 ```
 gulp test --debug
 ```
 
-Run tests with Chrome and remain open for debugging
+Disable single run to remain open for debugging
 ```
-gulp test --debug --watch
+gulp test --watch
+```
+
+These are often combined and typical command for debugging tests is:
+```
+gulp test --chrome --debug --watch
 ```

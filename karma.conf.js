@@ -10,9 +10,9 @@ module.exports = function (config) {
           './tmp/**/*.js'
         ],
         exclude: [],
-        reporters: ['spec', 'coverage'],
+        reporters: argv.debug ? ['spec'] : ['spec', 'coverage'],
         autoWatch: true,
-        browsers: [argv.debug ? 'Chrome' : 'PhantomJS'],
+        browsers: [argv.chrome ? 'Chrome' : 'PhantomJS'],
         plugins: [
             'karma-chrome-launcher',
             'karma-jasmine',
