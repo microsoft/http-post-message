@@ -80,11 +80,12 @@ export class HttpPostMessage {
     });
   }
   
-  delete(url: string, headers: any = {}) {
+  delete(url: string, body: any, headers: any = {}) {
     return this.send({
       method: "DELETE",
       url,
-      headers
+      headers,
+      body
     });
   }
   

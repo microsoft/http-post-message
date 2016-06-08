@@ -96,6 +96,24 @@ describe("HttpPostMessage", function () {
     // Assert
     expect(postMessageSpy).toHaveBeenCalledWith(expectedRequest);
   });
+
+  it("delete() calls windowPostMessageProxy.postMessage with DELETE request", function () {
+    // Arrange
+    const expectedRequest = {
+      method: "DELETE",
+      url: 'report/pages/activepage',
+      headers: {},
+      body: {
+        testBody: true
+      }
+    };
+    
+    // Act
+    httpPostMessage.delete(expectedRequest.url, expectedRequest.body);
+    
+    // Assert
+    expect(postMessageSpy).toHaveBeenCalledWith(expectedRequest);
+  });
   
   describe("custom headers", function () {
     let defaultHeaders: any;
