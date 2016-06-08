@@ -5,11 +5,11 @@ export interface IRequest {
   body?: any;
 }
 
-export interface IResponse {
+export interface IResponse<T> {
   statusCode: number;
   statusText: string;
   headers: any;
-  body: any;
+  body: T;
 }
 
 export interface IPostMessage {
@@ -45,16 +45,16 @@ export class HttpPostMessage {
     this.windowPostMessageProxy = windowPostMessageProxy;
   }
   
-  get(url: string, headers: any = {}): Promise<IResponse> {
-    return this.send({
+  get<T>(url: string, headers: any = {}) {
+    return this.send<T>({
       method: "GET",
       url,
       headers
     });
   }
   
-  post(url: string, body: any, headers: any = {}) {
-    return this.send({
+  post<T>(url: string, body: any, headers: any = {}) {
+    return this.send<T>({
       method: "POST",
       url,
       headers,
@@ -62,8 +62,8 @@ export class HttpPostMessage {
     });
   }
   
-  put(url: string, body: any, headers: any = {}) {
-    return this.send({
+  put<T>(url: string, body: any, headers: any = {}) {
+    return this.send<T>({
       method: "PUT",
       url,
       headers,
@@ -71,8 +71,8 @@ export class HttpPostMessage {
     });
   }
   
-  patch(url: string, body: any, headers: any = {}) {
-    return this.send({
+  patch<T>(url: string, body: any, headers: any = {}) {
+    return this.send<T>({
       method: "PATCH",
       url,
       headers,
@@ -80,8 +80,8 @@ export class HttpPostMessage {
     });
   }
   
-  delete(url: string, body: any, headers: any = {}) {
-    return this.send({
+  delete<T>(url: string, body: any, headers: any = {}) {
+    return this.send<T>({
       method: "DELETE",
       url,
       headers,
@@ -89,7 +89,7 @@ export class HttpPostMessage {
     });
   }
   
-  send(request: IRequest): Promise<IResponse> {
+  send<T>(request: IRequest): Promise<IResponse<T>> {
     this.assign(request.headers, this.defaultHeaders);
     
     return this.windowPostMessageProxy.postMessage(request);
