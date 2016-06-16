@@ -80,7 +80,7 @@ export class HttpPostMessage {
     });
   }
   
-  delete<T>(url: string, body: any, headers: any = {}) {
+  delete<T>(url: string, body: any = null, headers: any = {}) {
     return this.send<T>({
       method: "DELETE",
       url,
