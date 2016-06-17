@@ -6,7 +6,7 @@
   "typings": "dist/httpPostMessage.d.ts",
   "scripts": {
     "test": "gulp test --chrome",
-    "prepublish": "tsc -p ."
+    "prepublish": "gulp build"
   },
   "repository": {
     "type": "git",
@@ -28,6 +28,9 @@
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-help": "^1.6.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.5.4",
+    "gulp-uglify": "^1.5.3",
     "jasmine": "^2.4.1",
     "jasmine-core": "^2.4.1",
     "jquery": "^2.2.3",

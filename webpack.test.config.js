@@ -1,12 +1,8 @@
 module.exports = {
-  entry: {
-    'httpPostMessage': './src/httpPostMessage.ts',
-  },
+  entry: './test/httpPostMessage.spec.ts',
   output: {
-    path: __dirname + "/dist",
-    filename: '[name].js',
-    library: 'http-post-message',
-    libraryTarget: 'umd'
+    path: __dirname + "/tmp",
+    filename: 'httpPostMessage.spec.js'
   },
   devtool: 'source-map',
   resolve: {
@@ -16,5 +12,8 @@ module.exports = {
     loaders: [
       { test: /\.ts$/, loader: 'ts-loader' }
     ]
+  },
+  ts: {
+    configFileName: "webpack.test.tsconfig.json"
   }
 }
