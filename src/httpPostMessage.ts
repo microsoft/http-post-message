@@ -14,7 +14,7 @@ export interface IResponse<T> {
 
 export interface IPostMessage {
   // postMessage<T>(message: any): Promise<T>;
-  postMessage(message: any): Promise<any>;
+  postMessage(window: Window, message: any): Promise<any>;
 }
 
 export class HttpPostMessage {
@@ -35,13 +35,16 @@ export class HttpPostMessage {
   }
   
   defaultHeaders: any;
+  targetWindow: Window;
   windowPostMessageProxy: any;
   
   constructor(
-    windowPostMessageProxy: any,
+    targetWindow: Window,
+    windowPostMessageProxy: IPostMessage,
     defaultHeaders: any = {}
   ) {
     this.defaultHeaders = defaultHeaders;
+    this.targetWindow = targetWindow;
     this.windowPostMessageProxy = windowPostMessageProxy;
   }
   
@@ -92,7 +95,7 @@ export class HttpPostMessage {
   send<T>(request: IRequest): Promise<IResponse<T>> {
     this.assign(request.headers, this.defaultHeaders);
     
-    return this.windowPostMessageProxy.postMessage(request);
+    return this.windowPostMessageProxy.postMessage(this.targetWindow, request);
   }
   
   /**

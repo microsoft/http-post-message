@@ -13,7 +13,7 @@ describe("HttpPostMessage", function () {
       postMessage: postMessageSpy
     };
     
-    httpPostMessage = new hpm.HttpPostMessage(windowPostMessageProxy);
+    httpPostMessage = new hpm.HttpPostMessage(window, windowPostMessageProxy);
   });
   
   beforeEach(function () {
@@ -40,7 +40,7 @@ describe("HttpPostMessage", function () {
     httpPostMessage.get(expectedRequest.url);
     
     // Assert
-    expect(postMessageSpy).toHaveBeenCalledWith(expectedRequest);
+    expect(postMessageSpy).toHaveBeenCalledWith(window, expectedRequest);
   });
   
   it("post() calls windowPostMessageProxy.postMessage with POST request", function () {
@@ -58,7 +58,7 @@ describe("HttpPostMessage", function () {
     httpPostMessage.post(expectedRequest.url, expectedRequest.body);
     
     // Assert
-    expect(postMessageSpy).toHaveBeenCalledWith(expectedRequest);
+    expect(postMessageSpy).toHaveBeenCalledWith(window, expectedRequest);
   });
   
   it("put() calls windowPostMessageProxy.postMessage with PUT request", function () {
@@ -76,7 +76,7 @@ describe("HttpPostMessage", function () {
     httpPostMessage.put(expectedRequest.url, expectedRequest.body);
     
     // Assert
-    expect(postMessageSpy).toHaveBeenCalledWith(expectedRequest);
+    expect(postMessageSpy).toHaveBeenCalledWith(window, expectedRequest);
   });
   
   it("patch() calls windowPostMessageProxy.postMessage with PATCH request", function () {
@@ -94,7 +94,7 @@ describe("HttpPostMessage", function () {
     httpPostMessage.patch(expectedRequest.url, expectedRequest.body);
     
     // Assert
-    expect(postMessageSpy).toHaveBeenCalledWith(expectedRequest);
+    expect(postMessageSpy).toHaveBeenCalledWith(window, expectedRequest);
   });
 
   it("delete() calls windowPostMessageProxy.postMessage with DELETE request", function () {
@@ -112,7 +112,7 @@ describe("HttpPostMessage", function () {
     httpPostMessage.delete(expectedRequest.url, expectedRequest.body);
     
     // Assert
-    expect(postMessageSpy).toHaveBeenCalledWith(expectedRequest);
+    expect(postMessageSpy).toHaveBeenCalledWith(window, expectedRequest);
   });
   
   describe("custom headers", function () {
@@ -124,7 +124,7 @@ describe("HttpPostMessage", function () {
         'custom-header-1': 'customValue',
         'request-id': 'abc123'
       };
-      httpPostMessageProxyWithDefaultHeaders = new hpm.HttpPostMessage(windowPostMessageProxy, defaultHeaders);
+      httpPostMessageProxyWithDefaultHeaders = new hpm.HttpPostMessage(window, windowPostMessageProxy, defaultHeaders);
     });
     
     it("default headers can be set, which will be included with each request", function () {
@@ -139,7 +139,7 @@ describe("HttpPostMessage", function () {
       httpPostMessageProxyWithDefaultHeaders.get(expectedRequest.url);
       
       // Assert
-      expect(postMessageSpy).toHaveBeenCalledWith(expectedRequest);
+      expect(postMessageSpy).toHaveBeenCalledWith(window, expectedRequest);
     });
     
     it("all the methods can have optional parameter to pass other custom headers for the single request", function () {
@@ -160,7 +160,7 @@ describe("HttpPostMessage", function () {
       httpPostMessageProxyWithDefaultHeaders.get(expectedRequest.url, singleRequestHeaders);
       
       // Assert
-      expect(postMessageSpy).toHaveBeenCalledWith(expectedRequest);
+      expect(postMessageSpy).toHaveBeenCalledWith(window, expectedRequest);
     });
   });
   
@@ -209,6 +209,6 @@ describe("HttpPostMessage", function () {
       expect(hpm.HttpPostMessage.isErrorMessage({ statusCode: 300 })).toEqual(true);
       expect(hpm.HttpPostMessage.isErrorMessage({ statusCode: 400 })).toEqual(true);
       expect(hpm.HttpPostMessage.isErrorMessage({ statusCode: 500 })).toEqual(true);
-    })
+    });
   });
 });
