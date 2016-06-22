@@ -44,7 +44,7 @@ gulp.task('min', 'Minify build files', function () {
 
 gulp.task('compile:spec', 'Compile typescript for tests', function () {
     return gulp.src(['typings/browser/**/*.d.ts', './src/**/*.ts', './test/**/*.spec.ts'])
-        .pipe(webpack(webpackConfig))
+        .pipe(webpack(webpackTestConfig))
         .pipe(gulp.dest('./tmp'));
 });
 
