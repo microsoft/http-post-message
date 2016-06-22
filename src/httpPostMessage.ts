@@ -22,7 +22,9 @@ export class HttpPostMessage {
   // live in this class, but then we have to have hard dependency for things like ITrackingProperties
   static addTrackingProperties(message: any, trackingProperties: any): any {
     message.headers = message.headers || {};
-    message.headers.id = trackingProperties.id;
+    if(trackingProperties && trackingProperties.id) {
+      message.headers.id = trackingProperties.id;
+    }
     return message;
   }
   static getTrackingProperties(message: any): any {

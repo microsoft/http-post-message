@@ -182,6 +182,21 @@ describe("HttpPostMessage", function () {
       // Assert
       expect(resultMessage.headers.id).toEqual(trackingProperties.id);
     });
+
+    it("addTrackingProperties will set header.id to undefined if trackingProperties or trackingProperties.id provided is falsy", function () {
+      // Arrange
+      const testMessage = {
+        method: "GET",
+        url: "report/pages",
+        headers: {}
+      };
+      
+      // Act
+      const resultMessage = hpm.HttpPostMessage.addTrackingProperties(testMessage, { x: 'abc' });
+      
+      // Assert
+      expect(resultMessage.headers.id).toBe(undefined);
+    });
     
     it("getTrackingProperties should return tracking properties object by fetching id from headers of message", function () {
       // Arrange
