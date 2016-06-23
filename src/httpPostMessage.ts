@@ -1,11 +1,11 @@
-export interface IRequest {
+export interface IHttpPostMessageRequest {
   method: "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
   url: string;
   headers: any;
   body?: any;
 }
 
-export interface IResponse<T> {
+export interface IHttpPostMessageResponse<T> {
   statusCode: number;
   statusText: string;
   headers: any;
@@ -94,7 +94,7 @@ export class HttpPostMessage {
     });
   }
   
-  send<T>(request: IRequest): Promise<IResponse<T>> {
+  send<T>(request: IHttpPostMessageRequest): Promise<IHttpPostMessageResponse<T>> {
     this.assign(request.headers, this.defaultHeaders);
     
     return this.windowPostMessageProxy.postMessage(this.targetWindow, request);
