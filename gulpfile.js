@@ -12,6 +12,7 @@ var rename = require('gulp-rename'),
 
 gulp.task('build', 'Build for release', function (done) {
     return runSequence(
+        'clean:dist',
         'compile:ts',
         'min',
         'generatecustomdts',
@@ -21,6 +22,7 @@ gulp.task('build', 'Build for release', function (done) {
 
 gulp.task('test', 'Run unit tests', function (done) {
     return runSequence(
+        'clean:tmp',
         'compile:spec',
         'test:spec',
         done
@@ -34,12 +36,24 @@ gulp.task('compile:ts', 'Compile source files', function () {
 });
 
 gulp.task('min', 'Minify build files', function () {
-    return gulp.src(['./dist/*.js'])
+    return gulp.src(['!./dist/*.min.js', './dist/*.js'])
         .pipe(uglify())
         .pipe(rename({
             suffix: '.min'
         }))
         .pipe(gulp.dest('./dist/'));
+});
+
+gulp.task('clean:dist', 'Clean dist folder', function () {
+    return del([
+        './dist/**/*'
+    ]);
+});
+
+gulp.task('clean:tmp', 'Clean tmp folder', function () {
+    return del([
+        './tmp/**/*'
+    ]);
 });
 
 gulp.task('compile:spec', 'Compile typescript for tests', function () {
