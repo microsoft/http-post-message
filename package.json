@@ -1,6 +1,6 @@
 {
   "name": "http-post-message",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A library to enabled HTTP communication over window.postMessage using window-post-message-proxy.  The enables communicating with iframes in a well known protocol and pattern.",
   "main": "dist/httpPostMessage.js",
   "typings": "dist/httpPostMessage.d.ts",
