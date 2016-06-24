@@ -1,5 +1,6 @@
 var gulp = require('gulp-help')(require('gulp'));
-var rename = require('gulp-rename'),
+var del = require('del'),
+    rename = require('gulp-rename'),
     replace = require('gulp-replace'),
     uglify = require('gulp-uglify'),
     karma = require('karma'),
