@@ -1,6 +1,5 @@
 # htt-post-message
-
-A library to enabled HTTP communication over window.postMessage using window-post-message-proxy.  The enables communicating with iframes in a well known protocol and pattern.
+A generic messaging component to send HTTP style message payloads over the window.postMessage API. Requires an implementation of window postMessage proxy such as 'window-post-message-proxy'.
 
 ## Installation
 ```
