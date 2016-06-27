@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://pbix.visualstudio.com/DefaultCollection/PaaS/_git/http-post-message"
+    "url": "https://github.com/Microsoft/http-post-message"
   },
   "keywords": [
     "Microsoft",
