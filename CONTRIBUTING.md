@@ -20,7 +20,7 @@ typings install
 
 ## Building
 ```
-tsc -p .
+gulp build
 ```
 Or if using VS Code: `Ctrl + Shift + B`
 
