@@ -4,7 +4,7 @@
 
 Clone the repository:
 ```
-git clone https://pbix.visualstudio.com/DefaultCollection/PaaS/Integrate/_git/http-post-message
+git clone https://github.com/Microsoft/http-post-message
 ```
 
 Install global dependencies if needed:
