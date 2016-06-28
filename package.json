@@ -12,6 +12,9 @@
     "type": "git",
     "url": "https://github.com/Microsoft/http-post-message"
   },
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "Microsoft",
     "post",
