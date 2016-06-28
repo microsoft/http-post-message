@@ -1,3 +1,5 @@
+var package = require('./package.json');
+
 module.exports = {
   entry: {
     'httpPostMessage': './src/httpPostMessage.ts',
@@ -5,7 +7,7 @@ module.exports = {
   output: {
     path: __dirname + "/dist",
     filename: '[name].js',
-    library: 'http-post-message',
+    library: package.name,
     libraryTarget: 'umd'
   },
   devtool: 'source-map',
