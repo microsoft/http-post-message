@@ -29,7 +29,7 @@ export class HttpPostMessage {
   }
   static getTrackingProperties(message: any): any {
     return {
-      id: message.headers.id
+      id: message.headers && message.headers.id
     };
   }
   static isErrorMessage(message: any): boolean {
