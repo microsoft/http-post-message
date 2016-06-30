@@ -1,4 +1,6 @@
 # htt-post-message
+[![Build Status](https://travis-ci.com/Microsoft/http-post-message.svg?token=nXyWFYxRu6tVxUMJAuJr&branch=master)](https://travis-ci.com/Microsoft/http-post-message)
+
 A generic messaging component to send HTTP style message payloads over the window.postMessage API. Requires an implementation of window postMessage proxy such as 'window-post-message-proxy'.
 
 ## Installation
