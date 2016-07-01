@@ -95,7 +95,7 @@ export class HttpPostMessage {
   }
   
   send<T>(request: IHttpPostMessageRequest): Promise<IHttpPostMessageResponse<T>> {
-    this.assign(request.headers, this.defaultHeaders);
+    request.headers = this.assign({}, this.defaultHeaders, request.headers);
     
     return this.windowPostMessageProxy.postMessage(this.targetWindow, request);
   }

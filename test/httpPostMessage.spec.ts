@@ -162,6 +162,27 @@ describe("HttpPostMessage", function () {
       // Assert
       expect(postMessageSpy).toHaveBeenCalledWith(window, expectedRequest);
     });
+
+    it('if a default header has same name as request header, request header should take priority', function () {
+      // Arrange
+      const singleRequestHeaders = {
+        'custom-header-1': 'newCustomValue'
+      };
+      const headers = $.extend({}, defaultHeaders, singleRequestHeaders);
+      headers['custom-header-1'] = 'newCustomValue';
+      
+      const expectedRequest = {
+        method: "GET",
+        url: 'report/pages',
+        headers
+      };
+      
+      // Act
+      httpPostMessageProxyWithDefaultHeaders.get(expectedRequest.url, singleRequestHeaders);
+      
+      // Assert
+      expect(postMessageSpy).toHaveBeenCalledWith(window, expectedRequest);
+    });
   });
   
   describe("message manipulation", function () {
