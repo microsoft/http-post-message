@@ -219,6 +219,41 @@ describe("HttpPostMessage", function () {
       expect(resultMessage.headers.id).toBe(undefined);
     });
     
+    it("getTrackingProperties should return id as undefined if message does not have headers object", function () {
+      // Arrange
+      const testMessage = {
+        method: "GET",
+        url: "report/pages"
+      };
+      const expectedTrackingProperties = {
+        id: <any>undefined
+      };
+      
+      // Act
+      const actualTrackingProperties = hpm.HttpPostMessage.getTrackingProperties(testMessage);
+      
+      // Assert
+      expect(actualTrackingProperties).toEqual(expectedTrackingProperties);
+    });
+
+    it("getTrackingProperties should return id as undefined if message headers does not have id value", function () {
+      // Arrange
+      const testMessage = {
+        method: "GET",
+        url: "report/pages",
+        headers: {}
+      };
+      const expectedTrackingProperties = {
+        id: <any>undefined
+      };
+      
+      // Act
+      const actualTrackingProperties = hpm.HttpPostMessage.getTrackingProperties(testMessage);
+      
+      // Assert
+      expect(actualTrackingProperties).toEqual(expectedTrackingProperties);
+    });
+
     it("getTrackingProperties should return tracking properties object by fetching id from headers of message", function () {
       // Arrange
       const testMessage = {
