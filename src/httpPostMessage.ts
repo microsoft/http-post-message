@@ -33,6 +33,10 @@ export class HttpPostMessage {
     };
   }
   static isErrorMessage(message: any): boolean {
+    if(typeof (message && message.statusCode) !== 'number') {
+      return false;
+    }
+    
     return !(200 <= message.statusCode && message.statusCode < 300);
   }
   

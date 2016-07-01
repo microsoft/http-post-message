@@ -281,5 +281,10 @@ describe("HttpPostMessage", function () {
       expect(hpm.HttpPostMessage.isErrorMessage({ statusCode: 400 })).toEqual(true);
       expect(hpm.HttpPostMessage.isErrorMessage({ statusCode: 500 })).toEqual(true);
     });
+
+    it("isErrorMessage should return false if message or message.statusCode is undefined", function () {
+      expect(hpm.HttpPostMessage.isErrorMessage(undefined)).toEqual(false);
+      expect(hpm.HttpPostMessage.isErrorMessage({ statusCode: null })).toEqual(false);
+    });
   });
 });
