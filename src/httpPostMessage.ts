@@ -18,11 +18,13 @@ export interface IPostMessage {
 }
 
 export class HttpPostMessage {
-  // TODO: I the responsibility of knowing how to configure windowPostMessageProxy should
-  // live in this class, but then we have to have hard dependency for things like ITrackingProperties
+  // TODO: See if it's possible to share tracking properties interface?
+  // The responsibility of knowing how to configure windowPostMessageProxy for http should
+  // live in this http class, but the configuration would need ITrackingProperties
+  // interface which lives in WindowPostMessageProxy. Use <any> type as workaround
   static addTrackingProperties(message: any, trackingProperties: any): any {
     message.headers = message.headers || {};
-    if(trackingProperties && trackingProperties.id) {
+    if (trackingProperties && trackingProperties.id) {
       message.headers.id = trackingProperties.id;
     }
     return message;
@@ -33,17 +35,17 @@ export class HttpPostMessage {
     };
   }
   static isErrorMessage(message: any): boolean {
-    if(typeof (message && message.statusCode) !== 'number') {
+    if (typeof (message && message.statusCode) !== 'number') {
       return false;
     }
-    
+
     return !(200 <= message.statusCode && message.statusCode < 300);
   }
-  
+
   defaultHeaders: any;
   targetWindow: Window;
   windowPostMessageProxy: any;
-  
+
   constructor(
     targetWindow: Window,
     windowPostMessageProxy: IPostMessage,
@@ -53,7 +55,7 @@ export class HttpPostMessage {
     this.targetWindow = targetWindow;
     this.windowPostMessageProxy = windowPostMessageProxy;
   }
-  
+
   get<T>(url: string, headers: any = {}) {
     return this.send<T>({
       method: "GET",
@@ -61,7 +63,7 @@ export class HttpPostMessage {
       headers
     });
   }
-  
+
   post<T>(url: string, body: any, headers: any = {}) {
     return this.send<T>({
       method: "POST",
@@ -70,7 +72,7 @@ export class HttpPostMessage {
       body
     });
   }
-  
+
   put<T>(url: string, body: any, headers: any = {}) {
     return this.send<T>({
       method: "PUT",
@@ -79,7 +81,7 @@ export class HttpPostMessage {
       body
     });
   }
-  
+
   patch<T>(url: string, body: any, headers: any = {}) {
     return this.send<T>({
       method: "PATCH",
@@ -88,7 +90,7 @@ export class HttpPostMessage {
       body
     });
   }
-  
+
   delete<T>(url: string, body: any = null, headers: any = {}) {
     return this.send<T>({
       method: "DELETE",
@@ -97,33 +99,33 @@ export class HttpPostMessage {
       body
     });
   }
-  
+
   send<T>(request: IHttpPostMessageRequest): Promise<IHttpPostMessageResponse<T>> {
     request.headers = this.assign({}, this.defaultHeaders, request.headers);
-    
+
     return this.windowPostMessageProxy.postMessage(this.targetWindow, request);
   }
-  
+
   /**
    * Object.assign() polyfill
    * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
    */
   private assign(target: any, ...sources: any[]): any {
-      if (target === undefined || target === null) {
-        throw new TypeError('Cannot convert undefined or null to object');
-      }
+    if (target === undefined || target === null) {
+      throw new TypeError('Cannot convert undefined or null to object');
+    }
 
-      const output = Object(target);
-      sources.forEach(source => {
-        if (source !== undefined && source !== null) {
-          for (var nextKey in source) {
-            if (Object.prototype.hasOwnProperty.call(source, nextKey)) {
-              output[nextKey] = source[nextKey];
-            }
+    const output = Object(target);
+    sources.forEach(source => {
+      if (source !== undefined && source !== null) {
+        for (var nextKey in source) {
+          if (Object.prototype.hasOwnProperty.call(source, nextKey)) {
+            output[nextKey] = source[nextKey];
           }
         }
-      });
-      
-      return output;
+      }
+    });
+
+    return output;
   }
 }
