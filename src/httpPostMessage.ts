@@ -13,8 +13,7 @@ export interface IHttpPostMessageResponse<T> {
 }
 
 export interface IPostMessage {
-  // postMessage<T>(message: any): Promise<T>;
-  postMessage(window: Window, message: any): Promise<any>;
+  postMessage<T>(window: Window, message: any): Promise<T>;
 }
 
 export class HttpPostMessage {
@@ -43,67 +42,70 @@ export class HttpPostMessage {
   }
 
   defaultHeaders: any;
-  targetWindow: Window;
-  windowPostMessageProxy: any;
+  defaultTargetWindow: Window;
+  windowPostMessageProxy: IPostMessage;
 
   constructor(
-    targetWindow: Window,
     windowPostMessageProxy: IPostMessage,
-    defaultHeaders: any = {}
+    defaultHeaders: any = {},
+    defaultTargetWindow?: Window
   ) {
     this.defaultHeaders = defaultHeaders;
-    this.targetWindow = targetWindow;
+    this.defaultTargetWindow = defaultTargetWindow;
     this.windowPostMessageProxy = windowPostMessageProxy;
   }
 
-  get<T>(url: string, headers: any = {}) {
+  get<T>(url: string, headers: any = {}, targetWindow: Window = this.defaultTargetWindow) {
     return this.send<T>({
       method: "GET",
       url,
       headers
-    });
+    }, targetWindow);
   }
 
-  post<T>(url: string, body: any, headers: any = {}) {
+  post<T>(url: string, body: any, headers: any = {}, targetWindow: Window = this.defaultTargetWindow) {
     return this.send<T>({
       method: "POST",
       url,
       headers,
       body
-    });
+    }, targetWindow);
   }
 
-  put<T>(url: string, body: any, headers: any = {}) {
+  put<T>(url: string, body: any, headers: any = {}, targetWindow: Window = this.defaultTargetWindow) {
     return this.send<T>({
       method: "PUT",
       url,
       headers,
       body
-    });
+    }, targetWindow);
   }
 
-  patch<T>(url: string, body: any, headers: any = {}) {
+  patch<T>(url: string, body: any, headers: any = {}, targetWindow: Window = this.defaultTargetWindow) {
     return this.send<T>({
       method: "PATCH",
       url,
       headers,
       body
-    });
+    }, targetWindow);
   }
 
-  delete<T>(url: string, body: any = null, headers: any = {}) {
+  delete<T>(url: string, body: any = null, headers: any = {}, targetWindow: Window = this.defaultTargetWindow) {
     return this.send<T>({
       method: "DELETE",
       url,
       headers,
       body
-    });
+    }, targetWindow);
   }
 
-  send<T>(request: IHttpPostMessageRequest): Promise<IHttpPostMessageResponse<T>> {
+  send<T>(request: IHttpPostMessageRequest, targetWindow: Window = this.defaultTargetWindow): Promise<IHttpPostMessageResponse<T>> {
     request.headers = this.assign({}, this.defaultHeaders, request.headers);
 
-    return this.windowPostMessageProxy.postMessage(this.targetWindow, request);
+    if(!targetWindow) {
+      throw new Error(`target window is not provided.  You must either provide the target window explicitly as argument to request, or specify default target window when constructing instance of this class.`);
+    }
+    return this.windowPostMessageProxy.postMessage(targetWindow, request);
   }
 
   /**

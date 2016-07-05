@@ -13,7 +13,7 @@ describe("HttpPostMessage", function () {
       postMessage: postMessageSpy
     };
     
-    httpPostMessage = new hpm.HttpPostMessage(window, windowPostMessageProxy);
+    httpPostMessage = new hpm.HttpPostMessage(windowPostMessageProxy, {}, window);
   });
   
   beforeEach(function () {
@@ -124,7 +124,7 @@ describe("HttpPostMessage", function () {
         'custom-header-1': 'customValue',
         'request-id': 'abc123'
       };
-      httpPostMessageProxyWithDefaultHeaders = new hpm.HttpPostMessage(window, windowPostMessageProxy, defaultHeaders);
+      httpPostMessageProxyWithDefaultHeaders = new hpm.HttpPostMessage(windowPostMessageProxy, defaultHeaders, window);
     });
     
     it("default headers can be set, which will be included with each request", function () {
