@@ -4,7 +4,8 @@
 A generic messaging component to send HTTP style message payloads over the window.postMessage API. Requires an implementation of window postMessage proxy such as 'window-post-message-proxy'.
 
 ## Installation
-```
+
+```bash
 npm install -g http-post-message
 ```
 
@@ -14,7 +15,7 @@ is just one method `postMessage` which returns a Promise.
 
 In the case below we created a mock postMessage proxy, but in normal usage you would likely use the accompanying library [window-post-message-proxy](https://pbix.visualstudio.com/DefaultCollection/PaaS/_git/window-post-message-proxy).
 
-```
+```typescript
 import * as hpm from 'http-post-message';
 
 const stubWindowPostMessageProxy: hpm.IPostMessage = {
