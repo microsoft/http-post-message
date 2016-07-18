@@ -1,3 +1,12 @@
 language: node_js
 node_js:
-    - node
+- node
+deploy:
+  provider: npm
+  email: nugetpowerbi@microsoft.com
+  api_key:
+    secure: TF8kH0ZONuKeZ/dEzydJbAMQY5NvWxSCIPZCoajqYvEJnAAa4vF/G0TOs57fyBpqaQx22TXbX/+Jw3bbB4grI2YEH8lNpidI7kRSEuVMkLQY+kxHwwYYxIvS+yfC4Wn66n9TNb1UlF79prna5G0QcJOnlWQUgRTOw2B6CRFy6dM3bBu4OJqI1a4t0BNS2S/9HWvF3mNwlCUhLAX4heYXJMt+R/97BPrnKykPND+kYgw8ZqSDknekeNdmGBnN+a95Cg6P6N/P7SFrPfshAv8YzHP2VnKumpnwHwydpE4RcGL247X8fWxvWs7Aw4X+ksRVrqAF5Qsfvpoow6nsQk1B2503OIwe8bXE5tKeRgcpTUAnUIaFVyJCY1ycpSQyo4RpRhxwftutrz6U6Vdl/ccwhR+5fLGpcFkcSP5tCev890+PERNsHw9uxmggGGB5Ts92ej2LETi1Ibn1Bw+y7g0GlMAwveyLaxwTJsD2a7mC99OlHAUsLtGgROMdh9NRSJdxxjBD+HFPqZjqJ4/dgPIr3HnfcHwvFZXOPKzBQG2bUmdsLaEIUht3Rrbv3xvwSL8cF9ieJO7HmL5bPJPgd2V3LERFt30kiuXP/Hw1GrcF6BFnMbOtDd//4u8HQoMjASIcLM0Xdq77laX5Kn9pf+KxvSt1/SABR1NpF2cZBhbjcs0=
+  on:
+    tags: true
+    repo: Microsoft/http-post-message
+    branch: dev
