@@ -1,5 +1,9 @@
 # htt-post-message
-[![Build Status](https://travis-ci.com/Microsoft/http-post-message.svg?token=nXyWFYxRu6tVxUMJAuJr&branch=master)](https://travis-ci.com/Microsoft/http-post-message)
+[![Travis branch](https://img.shields.io/travis/Microsoft/http-post-message.svg)](https://travis-ci.org/Microsoft/http-post-message)
+[![npm](https://img.shields.io/npm/v/http-post-message.svg)](https://www.npmjs.com/package/http-post-message)
+[![Total Downloads](https://img.shields.io/npm/dt/http-post-message.svg)](https://www.npmjs.com/package/http-post-message)
+[![Monthly Downloads](https://img.shields.io/npm/dm/http-post-message.svg)](https://www.npmjs.com/package/http-post-message)
+[![GitHub tag](https://img.shields.io/github/tag/microsoft/http-post-message.svg)](https://github.com/Microsoft/http-post-message)
 
 A generic messaging component to send HTTP style message payloads over the window.postMessage API. Requires an implementation of window postMessage proxy such as 'window-post-message-proxy'.
 
