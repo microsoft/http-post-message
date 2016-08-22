@@ -1,20 +1,20 @@
 {
-    "compilerOptions": {
-        "target": "es5",
-        "declaration": true,
-        "noImplicitAny": true,
-        "sourceMap": true,
-        "outDir": "dist"
-    },
-    "exclude": [
-        "node_modules",
-        "typings/main",
-        "typings/main.d.ts",
-        "typings/browser",
-        "typings/browser.d.ts",
-        "typings/index.d.ts",
-        "test",
-        "tmp",
-        "dist"
-    ]
+  "compilerOptions": {
+    "target": "es5",
+    "declaration": true,
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "outDir": "dist"
+  },
+  "exclude": [
+    "node_modules",
+    "typings/main",
+    "typings/main.d.ts",
+    "typings/browser",
+    "typings/browser.d.ts",
+    "typings/index.d.ts",
+    "test",
+    "tmp",
+    "dist"
+  ]
 }
