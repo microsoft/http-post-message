@@ -102,7 +102,7 @@ export class HttpPostMessage {
   send<T>(request: IHttpPostMessageRequest, targetWindow: Window = this.defaultTargetWindow): Promise<IHttpPostMessageResponse<T>> {
     request.headers = this.assign({}, this.defaultHeaders, request.headers);
 
-    if(!targetWindow) {
+    if (!targetWindow) {
       throw new Error(`target window is not provided.  You must either provide the target window explicitly as argument to request, or specify default target window when constructing instance of this class.`);
     }
     return this.windowPostMessageProxy.postMessage(targetWindow, request);
@@ -120,7 +120,7 @@ export class HttpPostMessage {
     const output = Object(target);
     sources.forEach(source => {
       if (source !== undefined && source !== null) {
-        for (var nextKey in source) {
+        for (var nextKey in source) { /* tslint:disable-line */
           if (Object.prototype.hasOwnProperty.call(source, nextKey)) {
             output[nextKey] = source[nextKey];
           }
