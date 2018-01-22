@@ -44,7 +44,7 @@
     "gulp-uglify": "^1.5.3",
     "jasmine": "^2.4.1",
     "jasmine-core": "^2.4.1",
-    "jquery": "^2.2.3",
+    "jquery": "^3.3.1",
     "karma": "^0.13.22",
     "karma-chrome-launcher": "^1.0.1",
     "karma-coverage": "^1.0.0",
