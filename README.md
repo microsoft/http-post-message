@@ -20,7 +20,7 @@ npm install --save http-post-message
 The HttpPostMessage takes in an object that implements the IPostMessage interface which
 is just one method `postMessage` which returns a Promise.
 
-In the case below we created a mock postMessage proxy, but in normal usage you would likely use the accompanying library [window-post-message-proxy](https://pbix.visualstudio.com/DefaultCollection/PaaS/_git/window-post-message-proxy) and configure it to handle http messages as shown in the section [below](#promiseresolution)
+In the case below we created a mock postMessage proxy, but in normal usage you would likely use the accompanying library [window-post-message-proxy](https://github.com/microsoft/window-post-message-proxy) and configure it to handle http messages as shown in the section [below](#promiseresolution)
 
 ```typescript
 import * as hpm from 'http-post-message';
